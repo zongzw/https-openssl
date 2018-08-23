@@ -55,7 +55,7 @@ done
             -out testreq.pem -outform PEM \
             -subj "/C=CN/ST=beijing/L=beijing/O=f5-L$index/OU=pd-L$index/CN=f5-L$index/emailAddress=zongzhaowei-2002@163.com"
 
-        openssl ca -in testreq.pem $passin -config $ca_conf
+        openssl ca -create_serial -in testreq.pem $passin -config $ca_conf
         openssl rsa -in testkey.pem $passin -out testkey.pem.insecure
         
         cp testkey.pem.insecure keychain/ca-l$index.key
@@ -71,7 +71,7 @@ done
         -out testreq.pem -outform PEM \
         -subj "/C=CN/ST=beijing/L=beijing/O=f5-local/OU=pd-local/CN=localhost/emailAddress=zongzhaowei-2002@163.com"
 
-    openssl ca -in testreq.pem $passin -config $cert_conf
+    openssl ca -create_serial -in testreq.pem $passin -config $cert_conf
     openssl rsa -in testkey.pem $passin -out testkey.pem.insecure
 
     cp testkey.pem.insecure keychain/server.key
