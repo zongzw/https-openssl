@@ -1,0 +1,4 @@
+1. run.sh 
+    -> access https://localhost
+        -> 错误代码：MOZILLA_PKIX_ERROR_SELF_SIGNED_CERT
+        -> 查看 -> 基本信息：无法验证此证书，因为颁发者未知。

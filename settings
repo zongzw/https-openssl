@@ -1,0 +1,3 @@
+nginx_home=/Users/zong/Documents/GitRepos/nginx-80-443
+nginx_script=$nginx_home/run-nginx.sh
+keypair_target=$nginx_home/conf.d

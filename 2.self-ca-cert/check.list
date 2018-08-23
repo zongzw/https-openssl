@@ -1,0 +1,21 @@
+1. run.sh 
+    ->  access https://localhost 
+        -> 错误代码：MOZILLA_PKIX_ERROR_SELF_SIGNED_CERT
+        -> 基本信息：查看 颁发给 和 颁发者
+
+2. run.sh 
+    -> add gens/ca.crt to trust CA 
+        -> access https://localhost
+            -> secure access completed
+            -> 查看证书：此证书已经过认证，可用于下列用途：
+                SSL 客户端证书
+                SSL 服务端证书
+                电子邮件签署者证书
+                邮件接受者证书
+            -> 详细信息：rootca.f5 -> localhost
+
+3. add ca.crt ca.key as server.crt server.key
+    -> rerun run_nginx.sh 
+        -> access https://localhost
+            -> 此证书已经过认证，可用于下列用途：SSL 证书颁发机构
+            -> 错误代码：MOZILLA_PKIX_ERROR_SELF_SIGNED_CERT

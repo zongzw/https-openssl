@@ -1,0 +1,5 @@
+1. run gen-cert-chain-key.sh
+    -> copy gens/server.key server.crt to nginx conf.d
+        -> start nginx container for test
+            -> access https://localhost
+                -> 错误代码：MOZILLA_PKIX_ERROR_V1_CERT_USED_AS_CA
