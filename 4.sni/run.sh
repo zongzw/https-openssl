@@ -96,5 +96,5 @@ done
     set +x 
 )
 
-$cdir/set-start-nginx.sh
+$cdir/setup-nginx.sh
 
