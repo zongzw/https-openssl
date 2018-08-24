@@ -79,3 +79,5 @@ done
 
 )
 
+$cdir/set-start-nginx.sh
+

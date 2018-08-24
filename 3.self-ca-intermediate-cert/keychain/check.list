@@ -1,11 +1,10 @@
-1. change openssl.conf:certificate_extensions:basicConstraints to CA:false
-    -> run.sh 
-        -> cat cacert.pem >> conf.d/server.crt
-            -> 错误代码：SEC_ERROR_UNKNOWN_ISSUER
-                该证书因为其颁发者证书未知而不被信任。 
-                该服务器可能未发送相应的中间证书。 
-                可能需要导入额外的根证书。
+1. run.sh 
+    -> access https://localhost
+        -> 
 
-2. change openssl.conf:certificate_extensions:basicConstraints to CA:true
-    -> run.sh 
-        -> 错误代码：MOZILLA_PKIX_ERROR_CA_CERT_USED_AS_END_ENTITY
+2. add root.crt to 服务器证书in Firefox
+    -> acess https://localhost
+        -> green lock
+        -> 查看证书：此证书已经过认证，可用于下列用途: ...
+        -> 详细信息：The expected 证书层次结构。
+
