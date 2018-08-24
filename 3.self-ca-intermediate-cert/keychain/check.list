@@ -1,6 +1,6 @@
 1. run.sh 
     -> access https://localhost
-        -> 
+        -> 错误代码：SEC_ERROR_UNKNOWN_ISSUER
 
 2. add root.crt to 服务器证书in Firefox
     -> acess https://localhost

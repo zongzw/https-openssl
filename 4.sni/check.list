@@ -1,0 +1,13 @@
+1. run.sh 
+    -> remove 443.x.conf from nginx/conf.d folder
+        -> run_nginx.sh; add 127.0.0.1 localhost.x to /etc/hosts
+            -> access https://localhost.x
+                -> 错误代码：SSL_ERROR_BAD_CERT_DOMAIN
+
+2. configure settings: set additional_server_number to 3
+    -> run.sh; add add 127.0.0.1 localhost.s$x to /etc/hosts, x is 1 2 3 
+        -> access https://localhost.s1
+            -> green lock; check the certificate "颁发给"
+        -> access https://localhost.s4
+            -> 错误代码：SSL_ERROR_BAD_CERT_DOMAIN
+
