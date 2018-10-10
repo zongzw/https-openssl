@@ -77,8 +77,8 @@ done
         openssl ca -create_serial -in testreq.pem $passin -config $cert_conf
         openssl rsa -in testkey.pem $passin -out testkey.pem.insecure
 
-        cp testkey.pem.insecure keychain/server$n.key
-        sed '/^\ /d' certs/$(cat serial.old).pem | grep -v Certificate > keychain/server$n.crt
+        cp testkey.pem.insecure keychain/server.key$n.key
+        sed '/^\ /d' certs/$(cat serial.old).pem | grep -v Certificate > keychain/server.crt$n.crt
     done
 
     while [ $additional_server_number -gt 0 ]; do 
