@@ -1,0 +1,2 @@
+#!/bin/bash 
+command="barbican --verbose --os-identity-api-version 2.0 --os-project-id fde45211da0a44ecbf38cb0b644ab30d" 
