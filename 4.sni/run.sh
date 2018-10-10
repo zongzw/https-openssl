@@ -101,5 +101,5 @@ done
     set +x 
 )
 
-$cdir/setup-nginx.sh
+#$cdir/setup-nginx.sh
 
