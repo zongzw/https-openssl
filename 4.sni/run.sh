@@ -53,7 +53,7 @@ done
         index=$(($index + 1))
         openssl req -newkey rsa:2048 -keyout testkey.pem $passout -keyform PEM \
             -out testreq.pem -outform PEM \
-            -subj "/C=CN/ST=beijing/L=beijing/O=f5-L$index/OU=pd-L$index/CN=f5-L$index/emailAddress=zongzhaowei-2002@163.com"
+            -subj "/C=$C/ST=$ST/L=$L/O=f5-L$index/OU=pd-L$index/CN=f5-L$index/emailAddress=$emailAddress"
 
         openssl ca -create_serial -in testreq.pem $passin -config $ca_conf
         openssl rsa -in testkey.pem $passin -out testkey.pem.insecure
@@ -65,16 +65,21 @@ done
         sed '/^\ /d' certs/$(cat serial.old).pem | grep -v Certificate > cacert.pem
     done
     
-    openssl req -newkey rsa:2048 -keyout testkey.pem $passout -keyform PEM \
-        -out testreq.pem -outform PEM \
-        -subj "/C=CN/ST=beijing/L=beijing/O=f5-local/OU=pd-local/CN=localhost/emailAddress=zongzhaowei-2002@163.com"
+    while [ $server_number -gt 0 ]; do 
 
-    openssl ca -create_serial -in testreq.pem $passin -config $cert_conf
-    openssl rsa -in testkey.pem $passin -out testkey.pem.insecure
+        n=$server_number
+        server_number=$(($server_number - 1))
 
-    cp testkey.pem.insecure keychain/server.key
-    sed '/^\ /d' certs/$(cat serial.old).pem | grep -v Certificate > keychain/server.crt
+        openssl req -newkey rsa:2048 -keyout testkey.pem $passout -keyform PEM \
+            -out testreq.pem -outform PEM \
+            -subj "/C=$C/ST=$ST/L=$L/O=$O/OU=$OU/CN=$CN/emailAddress=$emailAddress"
 
+        openssl ca -create_serial -in testreq.pem $passin -config $cert_conf
+        openssl rsa -in testkey.pem $passin -out testkey.pem.insecure
+
+        cp testkey.pem.insecure keychain/server$n.key
+        sed '/^\ /d' certs/$(cat serial.old).pem | grep -v Certificate > keychain/server$n.crt
+    done
 
     while [ $additional_server_number -gt 0 ]; do 
 
@@ -83,7 +88,7 @@ done
 
         openssl req -newkey rsa:2048 -keyout testkey.pem $passout -keyform PEM \
             -out testreq.pem -outform PEM \
-            -subj "/C=CN/ST=beijing/L=beijing/O=f5-local.s$n/OU=pd-local.s$n/CN=localhost.s$n/emailAddress=zongzhaowei-2002@163.com"
+            -subj "/C=$C/ST=$ST/L=$L/O=$O.s$n/OU=$OU.s$n/CN=$CN.s$n/emailAddress=$emailAddress"
     
         openssl ca -create_serial -in testreq.pem $passin -config $cert_conf
         openssl rsa -in testkey.pem $passin -out testkey.pem.insecure

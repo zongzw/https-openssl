@@ -1,3 +1,12 @@
 intermediate_number=3
+server_number=2
 additional_server_number=3
+
+C=CN
+ST=beijing
+L=beijing
+O="f5-local"
+OU="pd-local"
+CN="localhost"
+emailAddress="zongzhaowei-2002@163.com"
 
