@@ -1,0 +1,9 @@
+target=./dist
+
+numbits=2048
+
+C=CN
+ST=Beijing
+O="Zong Root Certification Authority"
+CN="Zong CA"
+emailAddress=a.zong@f5.com

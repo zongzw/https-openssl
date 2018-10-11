@@ -1,0 +1,13 @@
+target=./dist
+
+numbits=2048
+
+cacrt=$target/ca-l3.crt
+cakey=$target/ca-l3.key
+
+file_pref=server
+
+C=CN
+ST=beijing
+CN=example.com
+emailAddress="zongzhaowei-2002@163.com"

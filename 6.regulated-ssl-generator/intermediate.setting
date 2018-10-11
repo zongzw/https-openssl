@@ -1,0 +1,14 @@
+target=./dist
+numbits=2048
+
+rootca=$target/rootca.crt
+rootkey=$target/rootca.key
+level_num=3
+file_pref=ca-l
+
+C=CN
+ST=beijing
+L=beijing
+O_pref=f5-L
+CN_pref=f5-L
+emailAddress="zongzhaowei-2002@163.com"
